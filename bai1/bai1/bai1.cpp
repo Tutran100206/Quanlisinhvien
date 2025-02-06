@@ -4,47 +4,60 @@ using namespace std;
 struct HOCSINH
 {
 	string maso, hoten, ngaysinh, diachi, gioitinh;
-	double diemtb;
+	string diemtb;
 };
 void nhap1hs(HOCSINH& hs);
 void nhap(HOCSINH hs[], int& n);
+void xuat1HS(HOCSINH& hs);
+void xuat(HOCSINH hs[], int n);
 void sohocsinhlenlop(HOCSINH hs[], int n);
 int main() {
 	HOCSINH hs[50];
 	int n;
 	nhap(hs, n);
+	xuat(hs, n);
 	sohocsinhlenlop(hs, n);
 	return 0;
 }
 void nhap(HOCSINH hs[], int& n) {
 	cin >> n;
 	for (int i = 0; i < n; i++) {
-		cout << "Nhap thong tin hoc sinh " << i + 1 << endl;
 		nhap1hs(hs[i]);
 		cout << endl;
 	}
 }
 void nhap1hs(HOCSINH& hs) {
-	cout << "Nhap ma so hoc sinh: ";
 	cin >> hs.maso;
 	cin.ignore();
-	cout << "Nhap ho va ten hoc sinh : ";
 	getline(cin, hs.hoten);
-	cout << "Nhap ngay thang nam sinh: ";
-	getline(cin, hs.ngaysinh);
-	cout << "Nhap dia chi: ";
+	cin >> hs.ngaysinh;
+	cin.ignore();
 	getline(cin, hs.diachi);
-	cout << "Nhap gioi tinh: ";
 	cin >> hs.gioitinh;
-	cout << "Nhap diem trung binh: ";
 	cin >> hs.diemtb;
 }
-void sohocsinhlenlop(HOCSINH hs[], int n) {
-	int dem = 0;
+void xuat1HS(HOCSINH &hs) {
+	cout << hs.maso << endl;
+	cout << hs.hoten << endl;
+	cout << hs.ngaysinh << endl;
+	cout << hs.diachi << endl;
+	cout << hs.gioitinh << endl;
+	cout << hs.diemtb << endl;
+}
+void xuat(HOCSINH hs[], int n) {
 	for (int i = 0; i < n; i++) {
-		if (hs[i].diemtb >= 5.0) {
-			dem++;
+		xuat1HS(hs[i]);
+	}
+}
+void sohocsinhlenlop(HOCSINH hs[], int n) {
+	int tam = 0;
+	for (int i = 0; i < n; i++) {
+		if (hs[i].diemtb[0] >= '5') {
+			tam++;
 		}
 	}
-	cout << "so hoc sinh len lop la: " << dem;
+	cout << tam;
 }
+/*
+*fulltest 200/200 uteoj
+*/
